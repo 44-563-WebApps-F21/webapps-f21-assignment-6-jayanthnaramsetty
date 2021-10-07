@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Cars_JS
+    </title>
+</head>
+
+<body>
+
+    <h2>Jayanth Naramsetty Orders a car</h2>
+
+    <form>
+        <input type="checkbox" id="chckbox1_elec" name="prprty1" value="electric">
+        <label for="chckbox1_elec">Electric</label></br>
+
+        <input type="checkbox" id="chckbox1_ac" name="prprty2" value="ac">
+        <label for="chckbox1_ac">AC</label></br>
+
+        <input type="checkbox" id="chckbox1_gps" name="prprty3" value="gps">
+        <label for="chckbox1_gps">GPS</label></br>
+
+        <input type="button" onclick="orderCar()" value="Order a Car">
+    </form>
+
+    <p id="taggu">The values will be updated.</p>
+
+    <script>
+        let my_car = {};
+        function orderCar() {
+            my_car = {};
+            elecVal = document.getElementById("chckbox1_elec").checked
+            acVal = document.getElementById("chckbox1_ac").checked
+            gpsVal = document.getElementById("chckbox1_gps").checked
+            confirmed = confirm("Are the values " + elecVal + ", " + acVal + " and " + gpsVal)
+
+            taggd = document.getElementById("taggu")
+
+            if (confirmed) {
+                my_car = { elecVal, acVal, gpsVal }
+                my_car = JSON.stringify(my_car)
+                taggd.innerHTML = my_car
+                my_car = JSON.parse(my_car)
+            }
+            else {
+                my_car = { elecVal, acVal, gpsVal }
+                taggd.innerHTML = "Values were not confirmed, so it returns an empty string."
+            }
+        }
+    </script>
+
+    <form>
+        <label for="valuePrprty">Enter a property</label>
+        <input id="valuePrprty" type="text" value="color"> <br>
+
+        <label for="valValue">Enter a Value</label>
+        <input id="valValue" type="text"> <br>
+
+        <input type="button" onclick="updateCar()" value="Update the Car">
+    </form>
+
+    <p id="valueprprtyval">The answer gets updated here.</p>
+
+    <script>
+
+        function updateCar() {
+            prpty = document.getElementById("valuePrprty").value
+            vals = document.getElementById("valValue").value
+            resultValue = document.getElementById("valueprprtyval")
+            let my_car = "";
+            my_car = prpty + " : " + vals
+
+            resultValue.innerHTML = "Properties and values of car is follows - " + my_car;
+        }
+    </script>
+
+</body>
+
+</html>
