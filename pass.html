@@ -59,7 +59,13 @@
             secret = document.getElementById("secretPhrase").value
             guess = document.getElementById("phraseToCheck").value
             tagged = document.getElementById("tag")
-            if (wrong > 2) {
+            if (secret === guess) {
+                correct = correct + 1;
+                alert("Access allowed");
+                tagged.innerHTML = "Phrase Correct count = " + correct;
+            }
+            else {
+                if (wrong > 2) {
                     alert("Account Locked!Please try again");
                     tagged.innerHTML = "Account is locked. Please try again after few minutes!";
                 }
@@ -68,6 +74,7 @@
                     alert("Access Denied");
                     tagged.innerHTML = "Phrase Wrong count = " + wrong;
                 }
+            }
         }
     </script>
 
